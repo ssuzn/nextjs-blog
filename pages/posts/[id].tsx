@@ -2,6 +2,7 @@ import { getAllPostIds, getPostData } from "@/lib/posts";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 import React from "react";
+import postStyles from "../../styles/Post.module.css";
 
 export default function Post({
   postData
@@ -13,12 +14,12 @@ export default function Post({
   }
 })  {
   return (
-    <div>
+    <div className={postStyles.container}>
       <Head>
-        <title>{postData.title}</title>
+        <title className={postStyles.title}>{postData.title}</title>
       </Head>
       <article>
-        <h1></h1>
+        <h1>{postData.title}</h1>
         <div>{postData.date}</div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
